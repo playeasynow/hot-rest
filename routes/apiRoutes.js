@@ -44,8 +44,9 @@ module.exports = function (app) {
             tables.push(newTable);
             res.json({response:true});
         }
-        
-        waitlist.push(newTable);
-        res.json({response : false});
+        else{
+            waitlist.push(newTable);
+            res.json({response : false});
+        }
     });
 };
