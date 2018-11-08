@@ -114,7 +114,7 @@
             function (data) {
                 console.log(data);
                 // If a table is available... tell user they are booked.
-                if (data) {
+                if (data.response) {
                     alert("Yay! You are officially booked!");
                 }
                 // If a table is available... tell user they on the waiting list.

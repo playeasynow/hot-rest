@@ -37,15 +37,15 @@ module.exports = function (app) {
         // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
         // newTable.routeName = newTable.name.replace(/\s+/g, "").toLowerCase();
 
-        console.log(res);
         // res.json(newTable);
-
+        
         if (tables.length < 5) {
+            res.statusCode = 200;
             tables.push(newTable);
-            return true;
+            res.json({response:true});
         }
         
         waitlist.push(newTable);
-        return false;
+        res.json({response : false});
     });
 };
