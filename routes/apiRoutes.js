@@ -12,41 +12,32 @@ module.exports = function (app) {
         return res.json(waitlist);
     });
 
-    // // Displays a single character, or returns false
-    // app.get("/api/characters/:character", function(req, res) {
-    //     const chosen = req.params.character;
-
-    //     console.log(chosen);
-
-    //     for (let i = 0; i < characters.length; i++) {
-    //     if (chosen === characters[i].routeName) {
-    //         return res.json(characters[i]);
-    //     }
-    //     }
-
-    //     return res.json(false);
-    // });
-
     // Create New Table - takes in JSON input
     app.post("/api/tables", function (req, res) {
         // req.body hosts is equal to the JSON post sent from the user
         // This works because of our body parsing middleware
         const newTable = req.body;
-
-        // Using a RegEx Pattern to remove spaces from newCharacter
-        // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-        // newTable.routeName = newTable.name.replace(/\s+/g, "").toLowerCase();
-
-        // res.json(newTable);
         
+        //if tables is under 5 add to tables, else add to waitlist
         if (tables.length < 5) {
             res.statusCode = 200;
             tables.push(newTable);
+
+            //tell the frontend they got a table
             res.json({response:true});
         }
         else{
             waitlist.push(newTable);
+
+            //tell the frontend they got waitlisted
             res.json({response : false});
         }
+    });
+
+    app.post("/api/clear",function(req,res){
+
+        tables.length = 0;
+        waitlist.length = 0;
+        res.json({success: "Cleared", status:200})
     });
 };
