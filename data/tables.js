@@ -1,4 +1,4 @@
-[
+const tables = [
     {
         name: "Test1",
         phoneNum: "1234567891",
@@ -18,3 +18,5 @@
         id: "testid3",
     },
 ]
+
+module.exports = tables;
