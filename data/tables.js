@@ -17,6 +17,12 @@ const tables = [
         email: "email2@email.com",
         id: "testid3",
     },
+    {
+        name: "Test4",
+        phoneNum: "1434567801",
+        email: "email3@email.com",
+        id: "testid4",
+    },
 ]
 
 module.exports = tables;
